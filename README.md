@@ -164,37 +164,7 @@ If you build different makefiles, then after using qmake, use `make clean` befor
 
 ### Building web version
 
-Web version is build in three steps:
-
-1.  **Compiling the GCLC to a WASM file**. This step is done via `emcc`,
-    and described 'Makefile.web'.
-2.  **Compiling the Typescript code** This is step is done via `npm`
-    (using [Vite](https://vitejs.dev/)).
-3.  Adding assets and deploying.
-
-First, you will need to setup locally
-[`npm`](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) and
-[`emcc`](https://emscripten.org/docs/getting_started/downloads.html). Once you have `emcc` available,
-in the project root directory run:
-
-```
-make -f Makefile.web
-```
-
-This step produces 'gclc.wasm' and 'gclc.js' inside 'gclcWeb/'.
-
-Now you have to install `npm` dependencies (only need to be done the first time).
-Inside 'gclcWeb/' run:
-
-```
-npm install
-```
-
-After that run
-
-```
-npm run build
-```
+Web version is
 
 Whole website will be generated inside 'gclcWeb/dist' directory. You can publish
 whole directory to the public server.
