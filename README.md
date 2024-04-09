@@ -4,12 +4,6 @@ GCLC is a mathematical software for producing high-quality mathematical
 illustrations, for teaching mathematics, and for automated proving of
 geometry theorems.
 
-GCLC has been developed, with some idle years, since 1995. Its first
-release made public (web) was built in 1996. There were several substantial
-code revisions. The original version was written in pure C, and over time it
-turned into C++ (while some C remains are still there). The current version
-with graphical user interface uses Qt libraries.
-
 The application was open-sourced in 2020, 25 years after its very first version.
 
 GCLC has a command-line and a graphical version.
