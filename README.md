@@ -110,11 +110,6 @@ The executable (release version) 'gclc' will be created in the folder 'gclc/exec
 
 ### Building gclc (command line version) from the terminal using qmake:
 
-Go to the folder 'gclc/source', then:
-
-```
-qmake cGCLC.pro
-make
 ```
 
 The executable (release version) 'gclc' will be created in the folder 'gclc/executable'.
@@ -124,8 +119,10 @@ The executable (release version) 'gclc' will be created in the folder 'gclc/exec
 Go to the folder 'gclc/source', then:
 
 ```
+
 qmake gGCLC.pro
 make
+
 ```
 
 The executable (release version) 'gclc-gui' will be created in the folder 'gclc/executable'.
@@ -157,7 +154,9 @@ is to be used afterwards, it should be renamed, for instance to
 'Makefile-gui-release', and then make could be invoked as follows:
 
 ```
+
 make -f Makefile-gui-release
+
 ```
 
 If you build different makefiles, then after using qmake, use `make clean` before `make`.
@@ -178,7 +177,9 @@ First, you will need to setup locally
 in the project root directory run:
 
 ```
+
 make -f Makefile.web
+
 ```
 
 This step produces 'gclc.wasm' and 'gclc.js' inside 'gclcWeb/'.
@@ -187,13 +188,17 @@ Now you have to install `npm` dependencies (only need to be done the first time)
 Inside 'gclcWeb/' run:
 
 ```
+
 npm install
+
 ```
 
 After that run
 
 ```
+
 npm run build
+
 ```
 
 Whole website will be generated inside 'gclcWeb/dist' directory. You can publish
@@ -205,7 +210,9 @@ Code editor is based on [Codemirror](https://codemirror.net/) library. Parser fo
 editor is generated from 'gclcWeb/gclcLanguage/gclc.grammar' file with `lezer-generator`:
 
 ```
+
 npx lezer-generator gclc.grammar -o lang.js
+
 ```
 
 #### Development server
@@ -217,3 +224,4 @@ reloads only when one of `ts` (`js`) files is changed.
 ## License
 
 This software is licensed under the [MIT License](LICENSE.md).
+```
