@@ -100,12 +100,6 @@ Under Linux, go to the folder 'gclc', then:
 make
 ```
 
-Under Windows, go to the folder 'gclc', then:
-
-```
-mingw32-make -f Makefile.win
-```
-
 The executable (release version) 'gclc' will be created in the folder 'gclc/executable'.
 
 ### Building gclc (command line version) from the terminal using qmake:
