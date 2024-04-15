@@ -68,14 +68,29 @@ jobs:
           rm source/manual/gclc_man.pdf
           mv gclc_man.pdf source/manual/gclc_man.pdf
 
-      - name: Install Qt
-        uses: jurplel/install-qt-action@v3.3.0
-        with:
-          version: "6.6.0"
-          host: "linux"
-          target: "desktop"
-          arch: "gcc_64"
-          cache: "false"
+      - name: Install Qt and dependencies
+        run: |
+          apt-get update && apt-get install -y \
+            python3 ninja-build cmake git gcc \
+            libc6-dev perl build-essential libdrm-dev \
+            libgles2-mesa-dev libgl1-mesa-dev libglu1-mesa-dev libfreetype-dev fontconfig libxkbcommon-dev \
+            libx11-xcb-dev libxrender-dev libxi-dev \
+            libxcb-render-util0-dev libxcb-shape0-dev libxcb-randr0-dev libxcb-xfixes0-dev libxcb-xkb-dev \
+            libxcb-sync-dev libxcb-shm0-dev libxcb-icccm4-dev libxcb-keysyms1-dev libxcb-image0-dev \
+            libxcb-util-dev libxcb-cursor-dev libxkbcommon-dev libxkbcommon-x11-dev libxext-dev libfontconfig-dev \
+            libx11-xcb-dev libx11-dev
+
+      - name: Configure and install Qt
+        run: |
+          cd /
+          git clone --depth 1 -b 6.2.4 git://code.qt.io/qt/qt5.git qt6
+          cd /qt6
+          ./init-repository --module-subset=essential,qtwayland
+          mkdir build
+          cd /qt6/build
+          /qt6/configure -static -release -no-pch -skip webengine -nomake tests -nomake examples -prefix '/qtBuild' -qt-freetype -xcb-xlib
+          cmake --build . --parallel
+          cmake --install .
 
       - name: Make CLI and GUI version
         run: |
@@ -121,7 +136,6 @@ jobs:
         run: |
           cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo -B build -S .
           cmake --build build
-          mkdir -p executable
           cp build/gclc executable/
           cp build/source/gclc-gui* executable/
 
