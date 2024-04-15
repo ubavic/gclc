@@ -109,7 +109,7 @@ jobs:
 
   buildWindows:
     runs-on: windows-2022
-    needs: [buildManual]
+    needs: [buildLinux, buildManual]
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
