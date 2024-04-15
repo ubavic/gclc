@@ -70,7 +70,7 @@ jobs:
 
       - name: Install Qt and dependencies
         run: |
-          apt-get update && apt-get install -y \
+          sudo apt-get update && apt-get install -y \
             python3 ninja-build cmake git gcc \
             libc6-dev perl build-essential libdrm-dev \
             libgles2-mesa-dev libgl1-mesa-dev libglu1-mesa-dev libfreetype-dev fontconfig libxkbcommon-dev \
