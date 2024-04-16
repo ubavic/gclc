@@ -91,7 +91,7 @@ jobs:
           cd build
           ../configure -static -release -no-pch -skip webengine -nomake tests -nomake examples -prefix '/qtBuild' -qt-freetype -xcb-xlib
           cmake --build . --parallel
-          cmake --install .
+          sudo cmake --install .
 
       - name: Make CLI and GUI version
         run: |
