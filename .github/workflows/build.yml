@@ -89,7 +89,7 @@ jobs:
           ./init-repository --module-subset=essential,qtwayland
           mkdir build
           cd build
-          ../configure -static -release -no-pch -skip webengine -nomake tests -nomake examples -prefix '/qtBuild' -qt-freetype -xcb-xlib
+          ../configure -static -release -no-pch -skip webengine -nomake tests -nomake examples -qt-freetype -xcb-xlib
           cmake --build . --parallel
           sudo cmake --install .
 
