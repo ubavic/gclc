@@ -1,8 +1,6 @@
 # GCLC
 
-GCLC is a mathematical software for producing high-quality mathematical
-illustrations, for teaching mathematics, and for automated proving of
-geometry theorems.
+G
 
 GCLC has been developed, with some idle years, since 1995. Its first
 release made public (web) was built in 1996. There were several substantial
