@@ -100,28 +100,6 @@ cmake -B build -S .
 cmake --build build
 ```
 
-The executable (release version) 'gclc' will be created in the folder 'gclc/executable'.
-
-### Building gclc (command line version) from the terminal using qmake:
-
-Go to the folder 'gclc/source', then:
-
-```
-qmake cGCLC.pro
-make
-```
-
-The executable (release version) 'gclc' will be created in the folder 'gclc/executable'.
-
-### Building gclc-gui (version with the graphical user interface) from the terminal
-
-Go to the folder 'gclc/source', then:
-
-```
-qmake gGCLC.pro
-make
-```
-
 The executable (release version) 'gclc-gui' will be created in the folder 'gclc/executable'.
 
 (For debug version: `qmake gGCLC.pro CONFIG+=debug CONFIG+=qml_debug`)
