@@ -13,6 +13,7 @@ jobs:
 
       - name: Make CLI version
         run: |
+          echo "Heloooooo!"
           echo ${{github.event.pull_request.head.ref}}
           cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo -B build -S .
           cmake --build build
