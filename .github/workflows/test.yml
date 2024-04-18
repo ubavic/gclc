@@ -1,7 +1,7 @@
 name: Test
 
 on:
-  pull_request_target:
+  pull_request:
     branches: [master]
 
 jobs:
@@ -13,6 +13,7 @@ jobs:
 
       - name: Make CLI version
         run: |
+          echo ${{github.event.pull_request.head.ref}}
           cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo -B build -S .
           cmake --build build
           mkdir -p executable
