@@ -18,17 +18,6 @@ The source code and executables for Windows and Linux are available from
 the [GCLC web page](http://www.matf.bg.ac.rs/~janicic/gclc/)
 or from the [Github Release page](https://github.com/janicicpredrag/gclc/releases).
 
-## Input
-
-GCLC accepts files in GCL language, but can also import [JavaView](http://www.javaview.de/) files.
-
-## Output
-
-GCLC processes GCL files and can export generated illustrations in several
-formats: simple LaTeX, LaTeX TikZ, LaTeX PSTricks, EPS, SVG and XML (textual specification).
-
-Proofs by the automated theorem provers are generated in LaTeX form.
-
 ## Usage with command line
 
 ```
