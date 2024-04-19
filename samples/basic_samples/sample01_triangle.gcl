@@ -1,6 +1,6 @@
 point A 50 65
 point B 45 35
-point C 90 35
+point C 190 35
 
 cmark_lt A
 cmark_lb B
