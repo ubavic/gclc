@@ -97,7 +97,7 @@ jobs:
 
       - name: Make CLI and GUI version
         run: |
-          cmake -CXXFLAGS="-static"  -DCMAKE_INSTALL_PREFIX=executable -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_PREFIX_PATH=/qtStatic -B build -S .
+          cmake -DCMAKE_CXX_FLAGS="-static" -DCMAKE_INSTALL_PREFIX=executable -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_PREFIX_PATH=/qtStatic -B build -S .
           cmake --build build
           cmake --build build --target install
 
