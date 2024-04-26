@@ -74,7 +74,7 @@ jobs:
           sudo apt-get install -y \
             python3 ninja-build cmake git gcc \
             libc6-dev perl build-essential libdrm-dev \
-            libgles2-mesa-dev libgl1-mesa-dev libglu1-mesa-dev \
+            libgles2-mesa-dev libgl1-mesa-dev libegl1-mesa-dev libglu1-mesa-dev libglfw3-dev  \
             libfreetype6-dev libfreetype-dev libfontconfig1 libfontconfig1-dev fontconfig libfontconfig-dev \
             libx11-xcb-dev libxrender-dev libxi-dev libxcb-xinerama0 libglx-dev \
             libxcb-render-util0-dev libxcb-shape0-dev libxcb-randr0-dev libxcb-xfixes0-dev libxcb-xkb-dev \
@@ -135,6 +135,8 @@ jobs:
 
       - name: Make CLI and GUI version
         run: |
+          ls D:\a\gclc\Qt\6.5.2\mingw_64
+          ls D:\a\gclc\Qt\6.5.2\mingw_64\bin\
           cmake -G "MinGW Makefiles" -DCMAKE_INSTALL_PREFIX=executable -DCMAKE_BUILD_TYPE=RelWithDebInfo -B build -S .
           cmake --build build
           cmake --build build --target install
