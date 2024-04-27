@@ -57,8 +57,8 @@ GReturnValue CSVGOutput::SetColor(unsigned char r, unsigned char g,
 GReturnValue CSVGOutput::SetBackgroundColor(unsigned char r, unsigned char g,
                                             unsigned char b) {
   std::string sCurrentColor = "#" + toHexString((unsigned int)(r)) +
-                         toHexString((unsigned int)(g)) +
-                         toHexString((unsigned int)(b));
+                              toHexString((unsigned int)(g)) +
+                              toHexString((unsigned int)(b));
   PrintToOutput("<rect fill=\"" + sCurrentColor +
                 "\" stroke=\"#000000\" stroke-width=\"0\" x=\"0.00\" "
                 "y=\"0.00\" width=\"" +
@@ -69,22 +69,23 @@ GReturnValue CSVGOutput::SetBackgroundColor(unsigned char r, unsigned char g,
 
 // ----------------------------------------------------------------------------
 
-GReturnValue CSVGOutput::PrintText(double x, double y, const std::string &sPosition,
+GReturnValue CSVGOutput::PrintText(double x, double y,
+                                   const std::string &sPosition,
                                    const std::string &sText) {
   std::string pos;
   if (sPosition == "[rb]")
     pos = "text-anchor=\"end\"";
   else if (sPosition == "[r]")
     pos = "text-anchor=\"end\" dy=\"" +
-          d2s(m_iCurrentFontSize / 2 / PT_PER_MM, 6) + "\"";
+          d2s(m_iCurrentFontSize / 2 / PT_PER_MM, 2) + "\"";
   else if (sPosition == "[rt]")
-    pos = "text-anchor=\"end\" dy=\"" +
-          d2s(m_iCurrentFontSize / PT_PER_MM, 6) + "\"";
+    pos = "text-anchor=\"end\" dy=\"" + d2s(m_iCurrentFontSize / PT_PER_MM, 6) +
+          "\"";
   else if (sPosition == "[b]")
     pos = "text-anchor=\"middle\"";
   else if (sPosition == "[t]")
     pos = "text-anchor=\"middle\" dy=\"" +
-          d2s(m_iCurrentFontSize / PT_PER_MM, 6) + "\"";
+          d2s(m_iCurrentFontSize / PT_PER_MM, 2) + "\"";
   else if (sPosition == "[lb]")
     ;
   else if (sPosition == "[l]")
@@ -131,10 +132,9 @@ GReturnValue CSVGOutput::DrawSegment(double x1, double y1, double x2,
       (y2 - y1 < 0.01))
     return rvG_OK;
   PrintToOutput("<line x1=\"" + d2s(x1 * SCALE, 2) + "\" y1=\"" +
-                d2s((m_nY - y1) * SCALE, 2) + "\" x2=\"" +
-                d2s(x2 * SCALE, 2) + "\" y2=\"" +
-                d2s((m_nY - y2) * SCALE, 2) + "\" style=\"stroke:" +
-                m_sCurrentColor + "; stroke-width:" +
+                d2s((m_nY - y1) * SCALE, 2) + "\" x2=\"" + d2s(x2 * SCALE, 2) +
+                "\" y2=\"" + d2s((m_nY - y2) * SCALE, 2) +
+                "\" style=\"stroke:" + m_sCurrentColor + "; stroke-width:" +
                 d2s(m_dCurrentLineWidth * SCALE, 2) + "\"/>\n");
 
   return rvG_OK;
@@ -148,10 +148,10 @@ GReturnValue CSVGOutput::DrawArc(double x1, double y1, double x2, double y2,
 
   if (phi == 360) {
     PrintToOutput("<circle cx=\"" + d2s(x1 * SCALE, 2) + "\" cy=\"" +
-                  d2s((m_nY - y1) * SCALE, 2) + "\" r=\"" +
-                  d2s(r * SCALE, 2) + "\" fill=\"none\" stroke=\"" +
-                  m_sCurrentColor + "\" stroke-width=\"" +
-                  d2s(m_dCurrentLineWidth * SCALE, 2) + "\"/>\n");
+                  d2s((m_nY - y1) * SCALE, 2) + "\" r=\"" + d2s(r * SCALE, 2) +
+                  "\" fill=\"none\" stroke=\"" + m_sCurrentColor +
+                  "\" stroke-width=\"" + d2s(m_dCurrentLineWidth * SCALE, 2) +
+                  "\"/>\n");
   } else {
     double x3, y3, sinn, cosn;
 
@@ -181,13 +181,12 @@ GReturnValue CSVGOutput::DrawArc(double x1, double y1, double x2, double y2,
 
     bSweep = 0;
 
-    PrintToOutput("<path d=\"M" + d2s(x2, 2) + "," + d2s(y2, 2) +
-                  "  a" + d2s(r, 2) + "," + d2s(r, 2) + " 0 " +
-                  i2s(bLarge) + "," + i2s(bSweep) + " " +
-                  d2s(x3 - x2, 2) + "," + d2s(y3 - y2, 2) +
+    PrintToOutput("<path d=\"M" + d2s(x2, 2) + "," + d2s(y2, 2) + "  a" +
+                  d2s(r, 2) + "," + d2s(r, 2) + " 0 " + i2s(bLarge) + "," +
+                  i2s(bSweep) + " " + d2s(x3 - x2, 2) + "," + d2s(y3 - y2, 2) +
                   "\" fill=\"none\" stroke=\"" + m_sCurrentColor +
-                  "\" stroke-width=\"" +
-                  d2s(m_dCurrentLineWidth * SCALE, 2) + "\"/>\n");
+                  "\" stroke-width=\"" + d2s(m_dCurrentLineWidth * SCALE, 2) +
+                  "\"/>\n");
   }
 
   return rvG_OK;
@@ -209,9 +208,9 @@ GReturnValue CSVGOutput::Init(int x, int y) {
   m_nX = x; // width
   m_nY = y; // height
   PrintToOutput("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");
-  PrintToOutput("<svg width=\"" + i2s(int(x)) + "mm\" height=\"" +
-                i2s(int(y)) + "mm\" viewBox=\"0 0 " + i2s(int(x * SCALE)) +
-                " " + i2s(int(y * SCALE)) +
+  PrintToOutput("<svg width=\"" + i2s(int(x)) + "mm\" height=\"" + i2s(int(y)) +
+                "mm\" viewBox=\"0 0 " + i2s(int(x * SCALE)) + " " +
+                i2s(int(y * SCALE)) +
                 "\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\">\n");
   PrintToOutput("<title>GCLCOutputFigure</title>\n");
   return rvG_OK;
@@ -221,12 +220,11 @@ GReturnValue CSVGOutput::Init(int x, int y) {
 
 GReturnValue CSVGOutput::FillTriangle(double x1, double y1, double x2,
                                       double y2, double x3, double y3) {
-  PrintToOutput(
-      "<path d=\"M" + d2s(x1 * SCALE, 2) + "," +
-      d2s((m_nY - y1) * SCALE, 2) + " L " + d2s(x2 * SCALE, 2) + "," +
-      d2s((m_nY - y2) * SCALE, 2) + " L " + d2s(x3 * SCALE, 2) + "," +
-      d2s((m_nY - y3) * SCALE, 2) + " z\" fill=\"" + m_sCurrentColor +
-      "\" stroke=\"none\"/>\n");
+  PrintToOutput("<path d=\"M" + d2s(x1 * SCALE, 2) + "," +
+                d2s((m_nY - y1) * SCALE, 2) + " L " + d2s(x2 * SCALE, 2) + "," +
+                d2s((m_nY - y2) * SCALE, 2) + " L " + d2s(x3 * SCALE, 2) + "," +
+                d2s((m_nY - y3) * SCALE, 2) + " z\" fill=\"" + m_sCurrentColor +
+                "\" stroke=\"none\"/>\n");
   return rvG_OK;
 }
 
@@ -234,13 +232,12 @@ GReturnValue CSVGOutput::FillTriangle(double x1, double y1, double x2,
 
 GReturnValue CSVGOutput::FillRectangle(double x1, double y1, double x2,
                                        double y2) {
-  PrintToOutput(
-      "<path d=\"M" + d2s(x1 * SCALE, 2) + "," +
-      d2s((m_nY - y1) * SCALE, 2) + " L " + d2s(x2 * SCALE, 2) + "," +
-      d2s((m_nY - y1) * SCALE, 2) + " L " + d2s(x2 * SCALE, 2) + "," +
-      d2s((m_nY - y2) * SCALE, 2) + " L " + d2s(x1 * SCALE, 2) + "," +
-      d2s((m_nY - y2) * SCALE, 2) + " z\" fill=\"" + m_sCurrentColor +
-      "\" stroke=\"none\"/>\n");
+  PrintToOutput("<path d=\"M" + d2s(x1 * SCALE, 2) + "," +
+                d2s((m_nY - y1) * SCALE, 2) + " L " + d2s(x2 * SCALE, 2) + "," +
+                d2s((m_nY - y1) * SCALE, 2) + " L " + d2s(x2 * SCALE, 2) + "," +
+                d2s((m_nY - y2) * SCALE, 2) + " L " + d2s(x1 * SCALE, 2) + "," +
+                d2s((m_nY - y2) * SCALE, 2) + " z\" fill=\"" + m_sCurrentColor +
+                "\" stroke=\"none\"/>\n");
   return rvG_OK;
 }
 
@@ -268,9 +265,8 @@ GReturnValue CSVGOutput::FillEllipseArc(double x1, double y1, double a,
     } else {
       PrintToOutput("<ellipse cx=\"" + d2s(x1 * SCALE, 2) + "\" cy=\"" +
                     d2s((m_nY - y1) * SCALE, 2) + "\" rx=\"" +
-                    d2s(a * SCALE, 2) + "\" ry=\"" +
-                    d2s(b * SCALE, 2) + "\" fill=\"" + m_sCurrentColor +
-                    "\" stroke=\"none\"/>\n");
+                    d2s(a * SCALE, 2) + "\" ry=\"" + d2s(b * SCALE, 2) +
+                    "\" fill=\"" + m_sCurrentColor + "\" stroke=\"none\"/>\n");
       return rvG_OK;
     }
   }
@@ -320,17 +316,15 @@ GReturnValue CSVGOutput::FillEllipseArc(double x1, double y1, double a,
   bSweep = 0;
 
   if (bFillTriangle)
-    PrintToOutput("<path d=\"M " + d2s(x1, 2) + "," + d2s(y1, 2) +
-                  " L " + d2s(xs, 2) + "," + d2s(ys, 2) + " a" +
-                  d2s(a, 2) + " " + d2s(b, 2) + " 0 " +
-                  i2s(bLarge) + " " + i2s(bSweep) + " " +
-                  d2s(xe - xs, 2) + " " + d2s(ye - ys, 2) +
-                  " z\" fill=\"" + m_sCurrentColor + "\" stroke=\"none\"/>\n");
+    PrintToOutput("<path d=\"M " + d2s(x1, 2) + "," + d2s(y1, 2) + " L " +
+                  d2s(xs, 2) + "," + d2s(ys, 2) + " a" + d2s(a, 2) + " " +
+                  d2s(b, 2) + " 0 " + i2s(bLarge) + " " + i2s(bSweep) + " " +
+                  d2s(xe - xs, 2) + " " + d2s(ye - ys, 2) + " z\" fill=\"" +
+                  m_sCurrentColor + "\" stroke=\"none\"/>\n");
   else
-    PrintToOutput("<path d=\"M " + d2s(xs, 2) + "," + d2s(ys, 2) +
-                  " a" + d2s(a, 2) + "," + d2s(b, 2) + " 0 " +
-                  i2s(bLarge) + " " + i2s(bSweep) + " " +
-                  d2s(xe - xs, 2) + " " + d2s(ye - ys, 2) +
+    PrintToOutput("<path d=\"M " + d2s(xs, 2) + "," + d2s(ys, 2) + " a" +
+                  d2s(a, 2) + "," + d2s(b, 2) + " 0 " + i2s(bLarge) + " " +
+                  i2s(bSweep) + " " + d2s(xe - xs, 2) + " " + d2s(ye - ys, 2) +
                   " z\" fill=\"" + m_sCurrentColor + "\" stroke=\"none\"/>\n");
 
   return rvG_OK;
