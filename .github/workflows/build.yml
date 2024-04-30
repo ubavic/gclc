@@ -104,8 +104,8 @@ jobs:
           cd build
           make
           cd ..
-          cp build/gclc.exe executable/
-          cp build/source/gclc.exe executable/
+          cp build/gclc executable/
+          cp build/source/gclc-gui executable/
 
       - name: Upload executables
         uses: actions/upload-artifact@v4
@@ -198,7 +198,7 @@ jobs:
           x86_64-w64-mingw32.static-cmake -B build -S .
           x86_64-w64-mingw32.static-cmake --build build
           cp build/gclc.exe executable/
-          cp build/source/gclc.exe executable/
+          cp build/source/gclc-gui.exe executable/
 
       - name: Upload executables
         uses: actions/upload-artifact@v4
