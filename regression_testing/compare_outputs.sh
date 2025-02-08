@@ -2,6 +2,8 @@
 
 LOG_FILE="./diff-log"
 
+echo "hello"
+
 compare_outputs() {
     echo $3
 
