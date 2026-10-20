@@ -98,7 +98,7 @@ jobs:
           ./init-repository --module-subset=qtbase
           mkdir build
           cd build
-          ../configure -static -release -no-pch -skip webengine -nomake tests -nomake examples -fontconfig -prefix '/qtStatic' -xcb-xlib -- -Wno-dev
+          ../configure -static -release -no-pch -skip webengine -nomake tests -nomake examples -fontconfig -no-icu -prefix '/qtStatic' -xcb-xlib -- -Wno-dev
           cmake --build . --parallel
           sudo cmake --install .
 
